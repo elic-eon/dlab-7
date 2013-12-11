@@ -9,12 +9,29 @@
 //Description:
 //--------------------------------------------------------------------------------
 module draw_ball(
-
-					);
+  .vcounter,
+  .hcounter,
+  .visible,
+  .color,
+  .radius,
+  .ball_x,
+  .ball_y,
+  .VGA_R,
+  .VGA_G,
+  .VGA_B
+);
 
 //--------------------------------------------------------------------------------
 // I/O ports declearation
-
+input [10:0] vcounter;
+input [11:0] hcounter;
+input        visible;
+input  [2:0] radius;
+input [10:0] ball_x;
+input [10:0] ball_y;
+output       VGA_R;
+output       VGA_G;
+output       VGA_B;
 
 //--------------------------------------------------------------------------------
 // Internal signal

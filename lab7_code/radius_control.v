@@ -9,12 +9,26 @@
 //Description:
 //--------------------------------------------------------------------------------
 module radius_control(
-
-					);
+  .CLK,
+  .reset,
+  .rotary_event,
+  .rotary_right,
+  .ball_x,
+  .ball_y,
+  .radius,
+  .oLED
+);
 
 //--------------------------------------------------------------------------------
 // I/O ports declearation
-
+input        CLK;
+input        reset;
+input        rotary_event;
+input        rotary_right;
+input [10:0] ball_x;
+input [10:0] ball_y;
+input  [2:0] radius;
+output [7:0] oLED;
 
 //--------------------------------------------------------------------------------
 // Internal signal
