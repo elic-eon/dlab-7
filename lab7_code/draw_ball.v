@@ -33,6 +33,9 @@ input [10:0] ball_y;
 output       VGA_R;
 output       VGA_G;
 output       VGA_B;
+reg          VGA_R;
+reg          VGA_G;
+reg          VGA_B;
 
 //--------------------------------------------------------------------------------
 // Internal signal
