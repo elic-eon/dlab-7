@@ -9,16 +9,16 @@
 //Description:
 //--------------------------------------------------------------------------------
 module draw_ball(
-  .vcounter,
-  .hcounter,
-  .visible,
-  .color,
-  .radius,
-  .ball_x,
-  .ball_y,
-  .VGA_R,
-  .VGA_G,
-  .VGA_B
+  vcounter,
+  hcounter,
+  visible,
+  color,
+  radius,
+  ball_x,
+  ball_y,
+  VGA_R,
+  VGA_G,
+  VGA_B
 );
 
 //--------------------------------------------------------------------------------
@@ -41,7 +41,7 @@ wire [31:0] ball_size;
 assign ball_size = ((hcounter - ball_x)*(hcounter - ball_x)+(vcounter - ball_y)*(vcounter - ball_y));
 
 alwyas(*)
-begin 
+begin
   if(visible)begin
     if(ball_size <= ((radius*5)*(radius*5)))
       begin
@@ -59,7 +59,7 @@ begin
       VGA_R = 1'b0; VGA_G = 1'b0; VGA_B = 1'b0;
   end
 end
-           
+
 //--------------------------------------------------------------------------------
 // Parameter declearation
 

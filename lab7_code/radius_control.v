@@ -9,14 +9,14 @@
 //Description:
 //--------------------------------------------------------------------------------
 module radius_control(
-  .CLK,
-  .reset,
-  .rotary_event,
-  .rotary_right,
-  .ball_x,
-  .ball_y,
-  .radius,
-  .oLED
+  CLK,
+  reset,
+  rotary_event,
+  rotary_right,
+  ball_x,
+  ball_y,
+  radius,
+  oLED
 );
 
 //--------------------------------------------------------------------------------
