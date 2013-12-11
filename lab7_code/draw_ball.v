@@ -45,12 +45,19 @@ begin
   if(visible)begin
     if(ball_size <= ((radius*5)*(radius*5)))
       begin
-        if(color == 2'd1)
-          VGA_R = 1'b1; VGA_G = 1'b0; VGA_B = 1'b0;
-        else if(color == 2'd2)
-          VGA_R = 1'b0; VGA_G = 1'b1; VGA_B = 1'b0;
-        else if(color == 2'd3)
-          VGA_R = 1'b0; VGA_G = 1'b0; VGA_B = 1'b1;
+        if(color == 2'd1) begin
+          VGA_R = 1'b1;
+          VGA_G = 1'b0;
+          VGA_B = 1'b0;
+        end else if(color == 2'd2) begin
+          VGA_R = 1'b0;
+          VGA_G = 1'b1;
+          VGA_B = 1'b0;
+        end else if(color == 2'd3) begin
+          VGA_R = 1'b0;
+          VGA_G = 1'b0;
+          VGA_B = 1'b1;
+        end
       end
     else begin
        VGA_R = 1'b0; VGA_G = 1'b0; VGA_B = 1'b0;
