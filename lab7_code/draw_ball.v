@@ -40,7 +40,7 @@ wire [31:0] ball_size;
 // (X-X0)^2 +(Y-Y0)^2 <= r^2
 assign ball_size = ((hcounter - ball_x)*(hcounter - ball_x)+(vcounter - ball_y)*(vcounter - ball_y));
 
-alwyas(*)
+always@(*)
 begin
   if(visible)begin
     if(ball_size <= ((radius*5)*(radius*5)))
