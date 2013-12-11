@@ -56,8 +56,8 @@ end
 
 always @(posedge CLK) begin
   if(reset) begin
-    ball_x <= ;
-    ball_y <= ;
+    ball_x <= 320;
+    ball_y <= 240;
   end else begin
     ball_x <= ball_x_w;
     ball_y <= ball_y_w;
