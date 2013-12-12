@@ -51,26 +51,25 @@ assign ball_size = ((hcounter - ball_x)*(hcounter - ball_x)+(vcounter - ball_y)*
 
 always@(*)
 begin
+  VGA_R = 1'b0;
+  VGA_G = 1'b0;
+  VGA_B = 1'b0;
   if(visible)begin
     if(ball_size <= ((radius*5+50)*(radius*5+50))) begin
-        if(color == 2'd1) begin
-          VGA_R = 1'b1;
-          VGA_G = 1'b0;
-          VGA_B = 1'b0;
-        end else if(color == 2'd2) begin
-          VGA_R = 1'b0;
-          VGA_G = 1'b1;
-          VGA_B = 1'b0;
-        end else if(color == 2'd3) begin
-          VGA_R = 1'b0;
-          VGA_G = 1'b0;
-          VGA_B = 1'b1;
-        end
-    end else begin
-       VGA_R = 1'b0; VGA_G = 1'b0; VGA_B = 1'b0;
+      if(color == 2'd1) begin
+        VGA_R = 1'b1;
+        VGA_G = 1'b0;
+        VGA_B = 1'b0;
+      end else if(color == 2'd2) begin
+        VGA_R = 1'b0;
+        VGA_G = 1'b1;
+        VGA_B = 1'b0;
+      end else if(color == 2'd3) begin
+        VGA_R = 1'b0;
+        VGA_G = 1'b0;
+        VGA_B = 1'b1;
+      end
     end
-  end else begin
-      VGA_R = 1'b0; VGA_G = 1'b0; VGA_B = 1'b0;
   end
 end
 
