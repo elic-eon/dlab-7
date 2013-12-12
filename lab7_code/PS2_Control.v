@@ -45,11 +45,10 @@ always @ (posedge CLK) begin
   end else begin
 		KCLK_P <= KCLK_C;
 		KCLK_C <= PS2_CLK;
+    ARRAY  <= ARRAY;
     if(KCLK_P > KCLK_C) begin
 			//		read data
-      ARRAY <= {PS2_DATA, ARRAY[20:0]};
-    end else begin
-      ARRAY <= ARRAY;
+      ARRAY <= {PS2_DATA, ARRAY[21:1]};
     end
   end
 end
