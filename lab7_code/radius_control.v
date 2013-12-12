@@ -57,7 +57,7 @@ begin
       if((ball_x + (radius*5+50))<=11'd635 &&
         (ball_y + (radius*5+50))<=11'd475 &&
         (ball_x - (radius*5+50))>=11'd5 &&
-        (ball_y - (radius*5+50))>=11'd5 )
+        (ball_y - (radius*5+50))>=11'd5 && radius <= 7)
         n_radius = radius + 1;
     end
     else begin
