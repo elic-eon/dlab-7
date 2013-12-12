@@ -66,7 +66,7 @@ end
 always @(ARRAY or ball_y or ball_x or radius) begin
   ball_y_w = ball_y;
   ball_x_w = ball_x;
-  if (ARRAY[8:1] == 8'hF0 && ARRAY[21] == 1) begin
+  if (ARRAY[8:1] == 8'hF0 && {ARRAY[21], ARRAY[11:10], ARRAY[0]} == 4'b1010) begin
     case(ARRAY[19:12])
       8'h75:
       begin
@@ -105,7 +105,7 @@ end
 always @(ARRAY or color_t or color) begin
   color_t_w = color_t;
   color_w   = color;
-  if (ARRAY[8:1] == 8'hF0 && ARRAY[21] == 1) begin
+  if (ARRAY[8:1] == 8'hF0 && {ARRAY[21], ARRAY[11:10], ARRAY[0]} == 4'b1010) begin
     case(ARRAY[19:12])
       8'h16: color_t_w = 2'd1;
       8'h1E: color_t_w = 2'd2;
