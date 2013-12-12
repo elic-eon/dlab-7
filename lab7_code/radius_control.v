@@ -41,7 +41,7 @@ reg    [2:0] n_radius;
 
 //--------------------------------------------------------------------------------
 // Function Design
-always @(CLK)
+always @(posedge CLK)
 begin
   if(reset)
     radius <= 3'd0;

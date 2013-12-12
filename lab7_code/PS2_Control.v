@@ -41,7 +41,7 @@ always @ (posedge CLK) begin
 	if(reset) begin
 		KCLK_P <= 0;
 		KCLK_C <= 0;
-    ARRAY  <= 0;
+    ARRAY  <= 22'd0;
   end else begin
 		KCLK_P <= KCLK_C;
 		KCLK_C <= PS2_CLK;
@@ -103,7 +103,7 @@ always @(posedge CLK) begin
   end
 end
 
-always @(ARRAY) begin
+always @(ARRAY or color_t or color) begin
   color_t_w = color_t;
   color_w   = color;
   if (ARRAY[8:1] == 8'hF0 && ARRAY[21] == 1) begin
