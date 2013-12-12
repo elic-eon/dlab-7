@@ -33,15 +33,21 @@ input [10:0] ball_y;
 output       VGA_R;
 output       VGA_G;
 output       VGA_B;
-reg          VGA_R;
-reg          VGA_G;
-reg          VGA_B;
 
 //--------------------------------------------------------------------------------
 // Internal signal
+reg          VGA_R;
+reg          VGA_G;
+reg          VGA_B;
 wire [31:0] ball_size;
-// (X-X0)^2 +(Y-Y0)^2 <= r^2
+
+//--------------------------------------------------------------------------------
+// Parameter declearation
+
+//--------------------------------------------------------------------------------
+// Function Design
 assign ball_size = ((hcounter - ball_x)*(hcounter - ball_x)+(vcounter - ball_y)*(vcounter - ball_y));
+// (X-X0)^2 +(Y-Y0)^2 <= r^2
 
 always@(*)
 begin
@@ -67,9 +73,6 @@ begin
       VGA_R = 1'b0; VGA_G = 1'b0; VGA_B = 1'b0;
   end
 end
-
-//--------------------------------------------------------------------------------
-// Parameter declearation
 
 endmodule
 

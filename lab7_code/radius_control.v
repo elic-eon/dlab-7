@@ -30,11 +30,17 @@ input [10:0] ball_y;
 output [2:0] radius;
 output [7:0] oLED;
 
+//--------------------------------------------------------------------------------
+// Internal signal
 reg    [2:0] radius;
 reg    [7:0] oLED;
 reg    [2:0] n_radius;
+
 //--------------------------------------------------------------------------------
-// Internal signal
+// Parameter declearation
+
+//--------------------------------------------------------------------------------
+// Function Design
 always @(CLK)
 begin
   if(reset)
@@ -42,7 +48,7 @@ begin
   else
     radius <= n_radius;
 end
-  
+
 always @(*)
 begin
   if(rotary_event)begin
@@ -61,7 +67,7 @@ begin
     else begin
       if(radius!=3'd0)
         n_radius = radius - 1;
-      else 
+      else
         n_radius = radius;
     end
   end
@@ -71,20 +77,17 @@ end
 
 always @(*)
 begin
-  case(radius)	
-     3'd0: oLED=8'b00000001;	
-     3'd1: oLED=8'b00000011;	
-     3'd2: oLED=8'b00000111;	
-     3'd3: oLED=8'b00001111;	
-     3'd4: oLED=8'b00011111;	
-     3'd5: oLED=8'b00111111;	
-     3'd6: oLED=8'b01111111;	
+  case(radius)
+     3'd0: oLED=8'b00000001;
+     3'd1: oLED=8'b00000011;
+     3'd2: oLED=8'b00000111;
+     3'd3: oLED=8'b00001111;
+     3'd4: oLED=8'b00011111;
+     3'd5: oLED=8'b00111111;
+     3'd6: oLED=8'b01111111;
      3'd7: oLED=8'b11111111;
   endcase
 end
-
-//--------------------------------------------------------------------------------
-// Parameter declearation
 
 endmodule
 
