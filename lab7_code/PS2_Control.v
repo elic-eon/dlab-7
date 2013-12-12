@@ -64,29 +64,29 @@ always @(posedge CLK) begin
   end
 end
 
-always @(ARRAY) begin
+always @(ARRAY or ball_y or ball_x or radius) begin
   ball_y_w = ball_y;
   ball_x_w = ball_x;
   if (ARRAY[8:1] == 8'hF0 && ARRAY[21] == 1) begin
     case(ARRAY[19:12])
       8'h75:
       begin
-        if ((ball_y + radius * 5) < 475)
+        if ((ball_y + radius * 5) < 11'd475)
           ball_y_w = ball_y + 11'd5;
       end
       8'h74:
       begin
-        if ((ball_x + radius * 5) < 635)
+        if ((ball_x + radius * 5) < 11'd635)
           ball_x_w = ball_x + 11'd5;
       end
       8'h6B:
       begin
-        if ((ball_x - radius * 5) > 5)
+        if ((ball_x - radius * 5) > 11'd5)
           ball_x_w = ball_x - 11'd5;
       end
       8'h72:
       begin
-        if ((ball_y - radius * 5) > 5)
+        if ((ball_y - radius * 5) > 11'd5)
           ball_y_w = ball_x - 11'd5;
       end
     endcase
