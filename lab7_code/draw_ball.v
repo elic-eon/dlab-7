@@ -46,7 +46,7 @@ assign ball_size = ((hcounter - ball_x)*(hcounter - ball_x)+(vcounter - ball_y)*
 always@(*)
 begin
   if(visible)begin
-    if(ball_size <= ((radius*5)*(radius*5))) begin
+    if(ball_size <= ((radius*5+50)*(radius*5+50))) begin
         if(color == 2'd1) begin
           VGA_R = 1'b1;
           VGA_G = 1'b0;
