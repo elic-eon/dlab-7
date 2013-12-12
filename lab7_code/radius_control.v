@@ -47,9 +47,13 @@ always @(*)
 begin
   if(rotary_event)begin
     if(rotary_right)begin//left,increase
-      if((ball_x + radius*5+50)>=11'd639)
+      if((ball_x + (radius*5+50))>=11'd639)
         n_radius = radius;
-      else if((ball_y + radius*5+50)>=11'd479)
+      else if((ball_y + (radius*5+50))>=11'd479)
+        n_radius = radius;
+      else if((ball_x - (radius*5+50))<=11'd0)
+        n_radius = radius;
+      else if((ball_y - (radius*5+50))<=11'd0)
         n_radius = radius;
       else
         n_radius = radius + 1;
