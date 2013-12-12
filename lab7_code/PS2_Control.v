@@ -41,7 +41,7 @@ always @ (posedge CLK) begin
 	if(reset) begin
 		KCLK_P <= 0;
 		KCLK_C <= 0;
-    ARRAY  <= 22'd0;
+    ARRAY  <= 22'b11_0000_0000_0_11_0000_0000_0;
   end else begin
 		KCLK_P <= KCLK_C;
 		KCLK_C <= PS2_CLK;
@@ -70,22 +70,22 @@ always @(ARRAY or ball_y or ball_x or radius) begin
     case(ARRAY[19:12])
       8'h75:
       begin
-        if ((ball_y + radius * 5) < 11'd475)
+        if ((ball_y + radius * 5) <= 11'd425)
           ball_y_w = ball_y + 11'd5;
       end
       8'h74:
       begin
-        if ((ball_x + radius * 5) < 11'd635)
+        if ((ball_x + radius * 5) <= 11'd585)
           ball_x_w = ball_x + 11'd5;
       end
       8'h6B:
       begin
-        if ((ball_x - radius * 5) > 11'd5)
+        if ((ball_x - radius * 5) => 11'd55)
           ball_x_w = ball_x - 11'd5;
       end
       8'h72:
       begin
-        if ((ball_y - radius * 5) > 11'd5)
+        if ((ball_y - radius * 5) => 11'd55)
           ball_y_w = ball_x - 11'd5;
       end
     endcase
