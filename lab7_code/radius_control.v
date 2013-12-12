@@ -27,11 +27,57 @@ input        rotary_event;
 input        rotary_right;
 input [10:0] ball_x;
 input [10:0] ball_y;
-input  [2:0] radius;
+output [2:0] radius;
 output [7:0] oLED;
 
+reg    [2:0] radius;
+reg    [7:0] oLED;
+reg    [2:0] n_radius;
 //--------------------------------------------------------------------------------
 // Internal signal
+always @(CLK)
+begin
+  if(reset)
+    radius <= 3'd0;
+  else
+    radius <= n_radius;
+end
+  
+always @(*)
+begin
+  if(rotary_event)begin
+    if(rotary_right)begin//left,increase
+      if((ball_x + radius*5+50)>=11'd639)
+        n_radius = radius;
+      else if((ball_y + radius*5+50)>=11'd479)
+        n_radius = radius;
+      else
+        n_radius = radius + 1;
+    end
+    else begin
+      if(radius!=3'd0)
+        n_radius = radius - 1;
+      else 
+        n_radius = radius;
+    end
+  end
+  else
+    n_radius = radius;
+end
+
+always @(*)
+begin
+  case(radius)	
+     3'd0: oLED=8'b00000001;	
+     3'd1: oLED=8'b00000011;	
+     3'd2: oLED=8'b00000111;	
+     3'd3: oLED=8'b00001111;	
+     3'd4: oLED=8'b00011111;	
+     3'd5: oLED=8'b00111111;	
+     3'd6: oLED=8'b01111111;	
+     3'd7: oLED=8'b11111111;
+  endcase
+end
 
 //--------------------------------------------------------------------------------
 // Parameter declearation
