@@ -51,28 +51,20 @@ end
 
 always @(*)
 begin
+  n_radius = radius;
   if(rotary_event)begin
     if(rotary_right)begin//left,increase
-      if((ball_x + (radius*5+50))>=11'd639)
-        n_radius = radius;
-      else if((ball_y + (radius*5+50))>=11'd479)
-        n_radius = radius;
-      else if((ball_x - (radius*5+50))<=11'd0)
-        n_radius = radius;
-      else if((ball_y - (radius*5+50))<=11'd0)
-        n_radius = radius;
-      else
+      if((ball_x + (radius*5+50))<=11'd635 &&
+        (ball_y + (radius*5+50))<=11'd475 &&
+        (ball_x - (radius*5+50))>=11'd5 &&
+        (ball_y - (radius*5+50))>=11'd5 )
         n_radius = radius + 1;
     end
     else begin
       if(radius!=3'd0)
         n_radius = radius - 1;
-      else
-        n_radius = radius;
     end
   end
-  else
-    n_radius = radius;
 end
 
 always @(*)
