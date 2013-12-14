@@ -36,6 +36,9 @@ reg [10:0] ball_y_w;
 reg  [1:0] color_w;
 reg  [1:0] color_t;
 reg  [1:0] color_t_w;
+wire       enable;
+
+assign enable = KCLK_P - KCLK_C;
 
 always @ (posedge CLK) begin
 	if(reset) begin
@@ -66,9 +69,9 @@ end
 always @(ARRAY or ball_y or ball_x or radius) begin
   ball_y_w = ball_y;
   ball_x_w = ball_x;
-  if (ARRAY[8:1] == 8'hF0 && {ARRAY[21], ARRAY[11:10], ARRAY[0]} == 4'b1010) begin
+  if (ARRAY[8:1] == 8'hF0 && {ARRAY[21], ARRAY[11:10], ARRAY[0]} == 4'b1010 && enable) begin
     case(ARRAY[19:12])
-      8'h75:
+      8'h72:
       begin
         if ((ball_y + radius * 5) <= 11'd425)
           ball_y_w = ball_y + 11'd5;
@@ -83,10 +86,10 @@ always @(ARRAY or ball_y or ball_x or radius) begin
         if (ball_x >= 11'd55 + radius * 5)
           ball_x_w = ball_x - 11'd5;
       end
-      8'h72:
+      8'h75:
       begin
         if (ball_y >= 11'd55 + radius * 5)
-          ball_y_w = ball_x - 11'd5;
+          ball_y_w = ball_y - 11'd5;
       end
     endcase
   end
@@ -105,7 +108,7 @@ end
 always @(ARRAY or color_t or color) begin
   color_t_w = color_t;
   color_w   = color;
-  if (ARRAY[8:1] == 8'hF0 && {ARRAY[21], ARRAY[11:10], ARRAY[0]} == 4'b1010) begin
+  if (ARRAY[8:1] == 8'hF0 && {ARRAY[21], ARRAY[11:10], ARRAY[0]} == 4'b1010 && enable) begin
     case(ARRAY[19:12])
       8'h16: color_t_w = 2'd1;
       8'h1E: color_t_w = 2'd2;
