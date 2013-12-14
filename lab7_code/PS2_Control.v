@@ -80,12 +80,12 @@ always @(ARRAY or ball_y or ball_x or radius) begin
       end
       8'h6B:
       begin
-        if (ball_x => 11'd55 + radius * 5)
+        if (ball_x >= 11'd55 + radius * 5)
           ball_x_w = ball_x - 11'd5;
       end
       8'h72:
       begin
-        if (ball_y => 11'd55 + radius * 5)
+        if (ball_y >= 11'd55 + radius * 5)
           ball_y_w = ball_x - 11'd5;
       end
     endcase
