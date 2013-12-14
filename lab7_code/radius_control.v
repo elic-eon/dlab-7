@@ -56,8 +56,9 @@ begin
     if(rotary_right)begin//left,increase
       if((ball_x + (radius*5+50))<=11'd635 &&
         (ball_y + (radius*5+50))<=11'd475 &&
-        (ball_x - (radius*5+50))>=11'd5 &&
-        (ball_y - (radius*5+50))>=11'd5 && radius <= 7)
+        ball_x >=11'd55+radius*5 &&
+        ball_y >=11'd55 &&
+        radius <= 7)
         n_radius = radius + 1;
     end
     else begin
